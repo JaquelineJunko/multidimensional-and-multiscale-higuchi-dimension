@@ -1,27 +1,15 @@
-diretorioDestino='C:\Users\jaque\Google Drive\IC\Implementa��o\Higuchi\Base 1\Base 1\results.mat';
-results = zeros(151,24);
-Lmax=45;
+dir_save='\results.mat';
+
 kmax = 8;
+Lmax = 45;
+L_i = 3 : 2: Lmax;
+num_of_L_i = length(L_i);
 
-% Benigno
-diretorioOrigem= 'C:\Users\jaque\Google Drive\IC\Implementa��o\Higuchi\Base 1\Base 1\Benigno\';
-for i = 1 : 67
-    img = imread( strcat(diretorioOrigem,'Benigno (',num2str(i),').bmp') ); %abrir imagem
-    
-    results(i,1:23) = mmHD_RBG_image( img, Lmax, kmax );
-    results(i,24) = 1;
-    
-    save(diretorioDestino);
-end
+results = zeros(1,num_of_L_i+1);
 
+path_image = 'path_to_image';
+img = imread(path_image);   % open image
 
-%Maligno
-diretorioOrigem= 'C:\Users\jaque\Google Drive\IC\Implementa��o\Higuchi\Base 1\Base 1\Maligno\';
-for i = 1 : 84
-    img = imread( strcat(diretorioOrigem,'Maligno (',num2str(i),').bmp') ); %abrir imagem
-    
-    results(67+i,1:23) = mmHD_RBG_image( img, Lmax, kmax );
-    results(67+i,24) = 2;
-    
-    save(diretorioDestino);
-end
+results(1,1:num_of_L_i+1) = mmHD_RBG_image( img, Lmax, kmax );  % compute multidimensional and multiscale higuchi dimension
+
+save(dir_save);             % save results

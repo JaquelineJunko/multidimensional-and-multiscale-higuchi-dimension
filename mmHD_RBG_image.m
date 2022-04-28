@@ -1,23 +1,29 @@
-function [ mmHD ] = mmHD_RBG_image( img, Lmax, kmax )
+function [ Hm ] = mmHD_RBG_image( img, Lmax, kmax )
 %{
-    Function: Calculate the multidimension and multiscale Higuchi dimension (mmHD) for the image
+    Function: Calculate the multidimension and multiscale Higuchi dimension (Hm) for the image
     INPUT: 
-        img [n,m,3]: RGB image 
-        Lmax [odd integer]: maximum scale of hipercube for the multiscale step 
-        kmax [integer]: maximum number of subseries in Higuchi method 
+        --- input ------------------------ information ------------------------ requirement ------ type/dimension ----
+        |   img     |                    RGB image                          |                 |   integer / [n,m,3]  |
+        |   Lmax    |  maximum scale of hipercube for the multiscale step   |   odd integer   |   integer / 1        |
+        |   kmax    |    maximum number of subseries in Higuchi method      |                 |   integer / 1        |
+        --------------------------------------------------------------------------------------------------------------
     OUTPUT:
-        mmHD [integer]: a single value of multidimensional and multiscale Higuchi dimension for the image
+        --- output --------------------------------------- information -------------------------- type/dimension-------------
+        |            | Multidimensional and multiscale higuchi dimension for the   |                                        |
+        |     Hm     | image under analysis, one value per sliding vector size     | real / [1,num_of_sliding_structures+1] |
+        |            | and the average of those values                             |                                        |
+        ---------------------------------------------------------------------------------------------------------------------
 
     Date: 10/10/2019
 %}
     tic;
-    mmHD = 0;
+    Hm = 0;
     
     for x = 1:size(img,1)                               % for each image row
-        mmHD = mmHD + DH_linha(img(x,:,:), Lmax, kmax); % compute Higuchi dimension on each row of the image 
+        Hm = Hm + mmHD_row(img(x,:,:), Lmax, kmax);     % compute Higuchi dimension on each row of the image 
     end
-    
-    mmHD = mmHD /size(img, 1);                          % compute the average of HF for each row
+
+    Hm = Hm /size(img, 1);                              % compute the average of HF for each row
 
     toc;
 end
