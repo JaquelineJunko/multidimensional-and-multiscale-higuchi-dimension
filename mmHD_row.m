@@ -13,7 +13,7 @@ function [ DH_line ] = mmHD_row( data1D, Lmax, kmax)
     OUTPUT:
         --- output --------------------------------------- information -------------------------- type/dimension-------------
         |            | Multidimensional and multiscale higuchi dimension for the   |                                        |
-        |  DH_line   | image row under analysis, one value per sliding vector size,| real / [1,num_of_sliding_structures+1] |
+        |  DH_line   | 1D serie under analysis, one value per sliding vector size, | real / [1,num_of_sliding_structures+1] |
         |            | and the average of those values                             |                                        |
         ---------------------------------------------------------------------------------------------------------------------
     
