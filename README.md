@@ -16,7 +16,7 @@ If not, you can download it in https://www.mathworks.com/products/compiler/matla
 You can compute the multidimensional and multiscale higuchi dimension for one single color image as shown in ```example.m``` or as:
 
 ``` matlab
-higuchi_dimension = mmHD_RBG_image(image, Lmax, kmax); 
+Hm = Hm_RBG_image(image, Lmax, kmax); 
 ```
 
 Or you can calculate the multidimensional and multiscale Higuchi Dimension for a dataset, as shown in ```example2.m```
