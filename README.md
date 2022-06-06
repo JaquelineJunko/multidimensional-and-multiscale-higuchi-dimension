@@ -1,4 +1,4 @@
-# Multidimensional and Multiscale Higuchi Dimension
+# Hm: A multiscale and multidimensional approach to calculate the Higuchi Fractal Dimension
 Multidimensional and Multiscale Higuchi dimension for the analysis of colorectal histological images
 
 Paper: https://ieeexplore.ieee.org/abstract/document/9313575
