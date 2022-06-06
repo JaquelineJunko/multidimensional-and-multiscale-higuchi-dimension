@@ -20,7 +20,7 @@ function [ Hm ] = Hm_RBG_image( img, Lmax, kmax )
     Hm = 0;
     
     for x = 1:size(img,1)                               % for each image row
-        Hm = Hm + mmHD_row(img(x,:,:), Lmax, kmax);     % sum of Higuchi dimension on each value of sliding vector  
+        Hm = Hm + Hm_row(img(x,:,:), Lmax, kmax);     % sum of Higuchi dimension on each value of sliding vector  
     end
 
     Hm = Hm /size(img, 1);                              % compute the average of HF on each value of sliding vector 
